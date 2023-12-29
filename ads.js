@@ -57,6 +57,9 @@ function onAdsManagerLoaded(adsManagerLoadedEvent) {
   adsManager.addEventListener(
       google.ima.AdEvent.Type.CONTENT_RESUME_REQUESTED,
       onContentResumeRequested);
+  adsManager.addEventListener(
+      google.ima.AdEvent.Type.LOADED,
+      onAdLoaded);
 }
 
 function onAdError(adErrorEvent) {
@@ -127,5 +130,11 @@ function adContainerClick(event) {
     videoElement.play();
   } else {
     videoElement.pause();
+  }
+}
+function onAdLoaded(adEvent) {
+  var ad = adEvent.getAd();
+  if (!ad.isLinear()) {
+    videoElement.play();
   }
 }
