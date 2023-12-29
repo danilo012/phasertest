@@ -41,7 +41,7 @@ function initializeIMA() {
       google.ima.AdErrorEvent.Type.AD_ERROR,
       onAdError,
       false);
-
+} 
 ...
 
 function onAdsManagerLoaded(adsManagerLoadedEvent) {
