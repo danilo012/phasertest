@@ -30,6 +30,7 @@ window.addEventListener('resize', function(event) {
 function initializeIMA() {
   console.log("initializing IMA");
   adContainer = document.getElementById('ad-container');
+  adContainer.addEventListener('click', adContainerClick);
   adDisplayContainer = new google.ima.AdDisplayContainer(adContainer, videoElement);
   adsLoader = new google.ima.AdsLoader(adDisplayContainer);
   adsLoader.addEventListener(
@@ -119,4 +120,12 @@ function onContentPauseRequested() {
 
 function onContentResumeRequested() {
   videoElement.play();
+}
+function adContainerClick(event) {
+  console.log("ad container clicked");
+  if(videoElement.paused) {
+    videoElement.play();
+  } else {
+    videoElement.pause();
+  }
 }
